@@ -1,0 +1,55 @@
+---
+subtitle: Plan d'analyse
+toc: true
+lof: false
+lot: false
+---
+
+
+# Généralités
+
+**Efficacité de la plaque *Osteobiol Lamina©* dans le traitement des communications bucco-sinusiennes : une étude clinique rétrospective**
+
+
+Vu la taille de l'échantillon on ne fera pas d'hypothèse de normalité. Les données discrètes seront présentées en pourcentage puis comparées par un test exact de Fisher ou du $\chi^2$. Les données numériques seront présentées par leur médiane & ses quartiles puis comparées par le test non paramétrique de Wilcoxon ou par une analyse de variance (ANOVA).
+
+Suer le critère principal `fermeture Oui/Non` si la donnée & manquante le cas sera exclu de l'étude. Pour les autres variables aucune imputation ne sera réalisée, les données manquantes seront traitées comme telles. Si pour un cas il y a plus de 50 % de variables non renseignées,le cas sera exclu.  
+Des graphiques pourront être réalisés pour des données importantes.
+
+Une analyse recherchant des facteurs pouvant influencer le critère étudié  pourra être réalisée en analyse simple, monovariée reprenant tous les facteurs démographiques généraux (âge, antécédents\dots) ou locaux (cause de la CBS\dots). Une analyse multivariée en régression logistique sera ensuit réalisée reprenant tous les critères ayant une p-value \< 20 %. Une recherche du meilleur modèle sera réalisée par un step-by-step descendant basé sur le critère d'information d'Akaike. Cette étape sera réalisée après imputation des données manquantes mais le résultat final sera calculé sur les données vraies.
+
+Un dépôt Github <https://github.com/philippemichel/CBSL> sera utilisé qui ne contiendra que le code & aucune donnée réelle. Un jeu de données faussé pourra être inclu à des fins d'exercice.
+
+L'analyse statistique sera réalisée avec le logiciel **R** [@rstat] & diverses librairies en particulier celles du `tidyverse` [@tidy] & `baseph` [@baseph].
+
+# Description de la population
+
+La base de donnée sera présentée avec une analyse des données manquantes puis une recherche de variables trop corrélées. Si cela devait être le cas certaines variables seraient alors exclues de l'étude avec l'accord du promoteur.
+
+Les données seront présentée en deux tableaux : un tableau démographique (âge, sexe, antécédents\dots) & un tableau pour les données concernant la lésion (pathologie initiale, type de lésion\dots).
+
+# Critère principal
+
+*L'efficacité sera évaluée par la fermeture clinique de la CBS à un mois post opératoire*
+
+La fermeture clinique sera jugée via une variable binaire fermée/pas fermé. Un chiffre de fermetures satisfaisantes sera donné avec le pourcentage & son intervalle de confiance à 95%.
+
+Une analyse recherchant des facteurs pouvant influencer la fermeture sera réalisée comme décrit dans le chapitre 1.
+
+# Critères secondaires
+
+## Critère 1
+
+*Le taux de complications de la technique sera évalué par la présence d’une complication à partir de la première semaine post opératoire jusqu’à M1 post-opératoire.*
+
+Le taux de complication sera présenté via une variable binaire. Un chiffre sera donné avec le pourcentage & son intervalle de confiance à 95%.
+
+Une analyse recherchant des facteurs pouvant influencer la survenue de complication sera réalisée comme décrit dans le chapitre 1.
+
+## Critère 2
+
+*Le taux de  sera évalué par la présence d’une désunion des sutures évaluée à partir de la première semaine post opératoire jusqu’à M1 post opératoire.*
+
+Le taux de désunion des sutures sera présenté via une variable binaire. Un chiffre sera donné avec le pourcentage & son intervalle de confiance à 95%.
+
+Une analyse recherchant des facteurs pouvant influencer la survenue d'une désunion des sutures sera réalisée comme décrit dans le chapitre 1.
