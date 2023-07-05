@@ -13,10 +13,10 @@ lot: false
 
 Vu la taille de l'échantillon on ne fera pas d'hypothèse de normalité. Les données discrètes seront présentées en pourcentage puis comparées par un test exact de Fisher ou du $\chi^2$. Les données numériques seront présentées par leur médiane & ses quartiles puis comparées par le test non paramétrique de Wilcoxon ou par une analyse de variance (ANOVA).
 
-Suer le critère principal `fermeture Oui/Non` si la donnée & manquante le cas sera exclu de l'étude. Pour les autres variables aucune imputation ne sera réalisée, les données manquantes seront traitées comme telles. Si pour un cas il y a plus de 50 % de variables non renseignées,le cas sera exclu.  
+Sur le critère principal `fermeture Oui/Non` si la donnée est manquante le cas sera exclu de l'étude. Pour les autres variables aucune imputation ne sera réalisée, les données manquantes seront traitées comme telles. Si pour un cas il y a plus de 50 % de variables non renseignées,le cas sera exclu.  
 Des graphiques pourront être réalisés pour des données importantes.
 
-Une analyse recherchant des facteurs pouvant influencer le critère étudié  pourra être réalisée en analyse simple, monovariée reprenant tous les facteurs démographiques généraux (âge, antécédents\dots) ou locaux (cause de la CBS\dots). Une analyse multivariée en régression logistique sera ensuit réalisée reprenant tous les critères ayant une p-value \< 20 %. Une recherche du meilleur modèle sera réalisée par un step-by-step descendant basé sur le critère d'information d'Akaike. Cette étape sera réalisée après imputation des données manquantes mais le résultat final sera calculé sur les données vraies.
+Une analyse recherchant des facteurs pouvant influencer le critère étudié  pourra être réalisée en analyse simple, monovariée reprenant tous les facteurs démographiques généraux (âge, antécédents\dots) ou locaux (cause de la CBS\dots). Une analyse multivariée en régression logistique sera ensuit réalisée reprenant tous les critères ayant une p-value \< 20 %. Une recherche du meilleur modèle sera réalisée par un step-by-step descendant basé sur le critère d'information d'Akaike. Cette étape sera réalisée après imputation des données manquantes mais le résultat final sera calculé sur les données vraies. Le résultat sera présenté en graphique des Odd-Ratio.
 
 Un dépôt Github <https://github.com/philippemichel/CBSL> sera utilisé qui ne contiendra que le code & aucune donnée réelle. Un jeu de données faussé pourra être inclu à des fins d'exercice.
 
@@ -24,7 +24,7 @@ L'analyse statistique sera réalisée avec le logiciel **R** [@rstat] & diverses
 
 # Description de la population
 
-La base de donnée sera présentée avec une analyse des données manquantes puis une recherche de variables trop corrélées. Si cela devait être le cas certaines variables seraient alors exclues de l'étude avec l'accord du promoteur.
+La base de donnée sera présentée avec une analyse des données manquantes puis une recherche de variables trop corrélées. Si cela devait être le cas certaines variables seraient alors exclues de l'étude avec l'accord du promoteur. De même des variables comportant trop de données manquantes ou uniformes seront exclues avec l'accord du promoteur.
 
 Les données seront présentée en deux tableaux : un tableau démographique (âge, sexe, antécédents\dots) & un tableau pour les données concernant la lésion (pathologie initiale, type de lésion\dots).
 
