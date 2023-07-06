@@ -2,6 +2,8 @@
 ![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)
 <!-- badges: end -->
 
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
+
 
 # CBSL
 Étude rétrospective monocentrique observationnelle
@@ -10,3 +12,4 @@
 # Fichiers
 
 - **Plan d'analyse** 05/07/2023
+ 

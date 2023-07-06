@@ -40,3 +40,6 @@ CBSL.Rproj
 QTDublinIrish.otf
 _extensions
 doc
+README_files
+*.aux
+*.log
