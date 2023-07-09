@@ -43,3 +43,4 @@ doc
 README_files
 *.aux
 *.log
+#CBSL_plan_analyse.tex#

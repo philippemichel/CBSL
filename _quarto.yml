@@ -12,7 +12,7 @@ format:
   logo-space-after: "0\\baselineskip"
   documentclass: scrreprt
   number-sections: true
-  titlepage-footer: "Dr JABALLAH MAGDELEINE  Service  ORL-- Hôpital NOVO (Site Pontoise)\\newline Chef de projet : Mme Véronique DA COSTA & Margaux NEDDER\\newline \\newline   \\newline Étude rétrospective monocentrique observationnelle \\newline \\today"
+  titlepage-footer: "D\\up{r} Nicolas JABALLAH MAGDELEINE  Service  ORL-- Hôpital NOVO (Site Pontoise)\\newline \\newline Chef de projet : M\\up{mes} Véronique DA COSTA & Margaux NEDDER\\newline \\newline \\newline \\today"
 titlepage-theme:
   title-fontstyle: ["Huge", "bfseries"]
   title-color: novo
@@ -25,6 +25,8 @@ include-in-header:
    text: |
     \definecolor{novo}{HTML}{27484b}
     \usepackage{siunitx}
+    \AddToHook{env/tabular/before}{\addfontfeatures{Numbers=Monospaced}}
+    \AddToHook{env/longtable/before}{\addfontfeatures{Numbers=Monospaced}}
 df-print : kable
 jss-pdf:
   keep-tex: true
@@ -37,7 +39,8 @@ lot: true
 mainfont: Faune
 mainfontoptions:
   - Ligatures=TeX
-sansfont: Myriad Pro
+  - Numbers=Proportional
+monofont: Fira Code
 sansfontoptions:
   - Ligatures=TeX
 fig-cap-location: bottom
