@@ -1,0 +1,50 @@
+---
+subtitle: "Rapport Statistique v1.0"
+---
+
+```{r setup}
+rm(list = ls())
+expx <- FALSE
+classeur <- "CBSL.xls"
+#
+library(forcats)
+library(stringr)
+library(baseph)
+library(knitr)
+library(tidyr)
+library(ggplot2)
+library(kableExtra)
+library(dplyr)
+library(janitor)
+library(parameters)
+library(forestmodel)
+library(labelled)
+library(gtsummary)
+library(colorspace)
+# sessionInfo()
+# 
+theme_gtsummary_language(language = "fr", decimal.mark = ",")
+options(OutDec = ",")
+```
+
+
+# Description de la population
+
+"
+La base comprend donc `r nrow(tt)` cas pour `r ncol(tt)` variables. Il n'y a quasiment pas de données manquantes. 
+
+# Critère principal
+*L’efficacité sera évaluée par la fermeture clinique de la CBS à un mois post opératoire.*
+
+# Critères secondaires
+
+## Critère secondaire 1
+*Le taux de complications de la technique sera évalué par la présence d’une complication à partir de la première semaine post opératoire jusqu’à M1 post-opératoire.*
+
+## Critère secondaire 2
+*Le taux de désunion des sutures sera évalué par la présence d’une désunion des sutures évaluée à partir de la première semaine post opératoire jusqu’à M1 post opératoire.*
+
+# Technique
+Il s'agit d'une analyse strictement descriptive.  Les données ont été décrites par la médiane & les quartiles pour les données numériques, en pourcentage pour les données catégorielles. Les intervalles de confiance ont été calculés par bootstrap pour un une limite à 95 %..
+
+L'analyse statistique a été réalisée avec le logiciel **R** [@rstat] & diverses librairies en particulier celles du `tidyverse` [@tidy] & `baseph` [@baseph].
