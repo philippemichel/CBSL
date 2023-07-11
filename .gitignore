@@ -44,3 +44,6 @@ README_files
 *.aux
 *.log
 #CBSL_plan_analyse.tex#
+CBSL.xls
+datas
+rapport_CBSL_files
