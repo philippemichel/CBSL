@@ -1,0 +1,206 @@
+---
+title: "CBSL"
+author:
+  - name: "Dr Philippe MICHEL"
+    affiliations:
+      name: "Hôpital NOVO - USRC"
+subtitle: "Rapport Statistique v1.0"
+format: 
+  revealjs:
+    theme: simple
+    embed-resources: true
+    logo: novo_usrc.png
+cache: true
+---
+
+## Description de la population
+
+```{r setup}
+rm(list = ls())
+#
+library(forcats)
+library(stringr)
+library(baseph)
+library(knitr)
+library(tidyr)
+library(ggplot2)
+library(kableExtra)
+library(tidyverse)
+library(janitor)
+library(parameters)
+library(labelled)
+library(gtsummary)
+library(colorspace)
+## sessionInfo()
+#
+theme_gtsummary_language(language = "fr", decimal.mark = ",")
+options(OutDec = ",")
+```
+
+
+```{r}
+#| label: import
+#| 
+
+tt <-
+  read_delim("datas/CBSL_BDD_gelee_20230705_NCR.txt",
+             delim = ";",
+             na = c("nk")) |>
+  dplyr::select(-(starts_with("..."))) |>
+  dplyr::select(-(starts_with("Date"))) |>
+  dplyr::select(-c("ID patient", "Remarques", "Nom", "Prenom"))
+btit <- read_delim("datas/bnoms.csv", delim = ";")
+names(tt) <- btit$code
+tt <- tt |>
+  mutate_if(is.character, as.factor) |>
+  janitor::clean_names()
+var_label(tt) <- btit$nom
+```
+
+
+La base comprend `r nrow(tt)` cas pour `r ncol(tt)` variables
+
+Il n'y a quasiment pas de données manquantes
+
+
+---
+```{r}
+#| label: tbl-desc1
+#| tbl-cap: Tableau descriptif
+
+tt |>
+  select(-1) |>
+  tbl_summary(missing = "no") |>
+  modify_header(label ~ " ") |>
+  add_n() |>
+  bold_labels() |>
+   as_kable_extra() |> 
+  kable_paper("hover", full_width = TRUE, font_size = 24) |> 
+  scroll_box(width = "100%", height = "680px")
+```
+
+
+
+## Critère principal
+
+*L’efficacité sera évaluée par la fermeture clinique de la CBS à un mois post opératoire.*
+
+
+```{r}
+#| label: biechec
+
+zz <- tt |> 
+  count(fermeture_cbs)
+zz <- zz$n
+pp <- round(zz[1]*100/sum(zz),1)
+tra <- transangph(zz[1],sum(zz))
+pc <- paste0(zz[1], " cas - ",pp," % ",tra$nb)
+```
+
+
+Un seul cas a été classé en échec de la fermeture clinique de la CBS 
+
+
+::: {.callout-warning collapse="true"}
+## `r pc`
+:::
+
+Il est donc impossible de faire la moindre comparaison fiable. 
+
+## 
+```{r}
+#| label: tbl-echec1
+#| tbl-cap: Échec
+
+tt |>
+  dplyr::filter(fermeture_cbs == "non") |> 
+  select(-c(1,13,14)) |>
+  tbl_summary(missing = "no") |>
+  modify_header(label ~ " ") |>
+  bold_labels() |>
+  as_kable_extra() |> 
+  kable_paper("hover", full_width = TRUE, font_size = 24) |> 
+  scroll_box(width = "100%", height = "680px")
+```
+
+
+
+## Critère secondaire 1
+
+*Le taux de complications de la technique sera évalué par la présence d’une complication à partir de la première semaine post opératoire jusqu’à M1 post-opératoire.*
+
+
+```{r}
+#| label: bicomplic
+
+
+zz <- tt |>
+  mutate(complication = if_else(type_complication == "aucune", "non", "oui")) |>
+  count(complication)
+zz <- zz$n
+pp <- round(zz[2] * 100 / sum(zz), 1)
+tra <- transangph(zz[2], sum(zz))
+pc <- paste0(zz[2], " cas - ", pp, " % ", tra$nb)
+```
+
+
+::: {.callout-warning}
+## Complications
+`r pc`
+:::
+
+## 
+```{r}
+#| label: tbl-complic1
+#| tbl-cap: Complications
+
+tt |>
+  mutate(Complication = if_else(type_complication == "aucune", "non", "oui")) |>
+  select(-c(1, 13, 14)) |>
+  tbl_summary(missing = "no", by = "Complication") |>
+  modify_header(label ~ " ") |>
+  bold_labels() |>
+  as_kable_extra() |>
+  kable_paper("hover", full_width = TRUE, font_size = 24) |> 
+  scroll_box(width = "100%", height = "680px")
+```
+
+## Critère secondaire 2
+
+*Le taux de désunion des sutures sera évalué par la présence d’une désunion des sutures évaluée à partir de la première semaine post opératoire jusqu’à M1 post opératoire.* 
+
+
+```{r}
+#| label: bisuture
+
+zz <- tt |>
+  count(desunion_sutures)
+zz <- zz$n
+pp <- round(zz[2] * 100 / sum(zz), 1)
+tra <- transangph(zz[2], sum(zz))
+pc <- paste0(zz[2], " cas - ", pp, " % ", tra$nb)
+```
+
+
+
+::: {.callout-warning}
+## Désunion de suture
+`r pc`
+:::
+
+##
+```{r}
+#| label: tbl-suture1
+#| tbl-cap: Complications
+
+tt |>
+  select(-c(1)) |>
+  tbl_summary(missing = "no", by = "desunion_sutures") |>
+  modify_header(label ~ " ") |>
+  bold_labels() |>
+  as_kable_extra() |> 
+  kable_paper("hover", full_width = TRUE, font_size = 24) |> 
+  scroll_box(width = "100%", height = "680px")
+```
+
+

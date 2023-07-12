@@ -12,7 +12,7 @@ lot: false
 
 **Efficacité de la plaque *Osteobiol Lamina©* dans le traitement des communications bucco-sinusiennes : une étude clinique rétrospective**
 
-Vu la taille de l'échantillon on ne fera pas d'hypothèse de normalité. Les données discrètes seront présentées en pourcentage puis comparées par un test exact de Fisher ou du $\chi^2$. Les données numériques seront présentées par leur médiane & ses quartiles puis comparées par le test non paramétrique de Wilcoxon ou par une analyse de variance (ANOVA).
+Vu la taille de l'échantillon on ne fera pas d'hypothèse de normalité. Les données discrètes seront présentées en pourcentage puis comparées par un test exact de Fisher ou du $\chi^2$. Les données numériques seront présentées par leur médiane & ses quartiles puis comparées par le test non paramétrique de Wilcoxon ou par une analyse de variance (ANOVA).gg
 
 Sur le critère principal `fermeture Oui/Non` si la donnée est manquante le cas sera exclu de l'étude. Pour les autres variables aucune imputation ne sera réalisée, les données manquantes seront traitées comme telles. Si pour un cas il y a plus de 50 % de variables non renseignées,le cas sera exclu.\
 Des graphiques pourront être réalisés pour des données importantes.
@@ -68,13 +68,3 @@ iris |>
 
 ```
 
-| Col1 | Col2 | Col3    |
-|------|------|---------|
-| 1111 | 1111 | 9999.99 |
-| 9999 | 9999 | 1111.11 |
-| 1    | 2    | 3       |
-
-
-1111
-
-9999
