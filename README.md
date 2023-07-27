@@ -12,7 +12,7 @@
 
 - **Plan d'analyse** 05/07/2023
 
--- **Rapport statistique** très simple,aucun intérêt.
+- **Rapport statistique** très simple,aucun intérêt.
 
 - **_yaml** Fignolé pour avoir des tableaux bien tabulés (chiffres non proportionnels) & autres réglages.
  

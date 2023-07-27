@@ -1,5 +1,5 @@
 ---
-subtitle: "Rapport Statistique v1.0"
+subtitle: "Rapport Statistique v1.1"
 ---
 
 ```{r setup}
@@ -40,12 +40,13 @@ tt <-
              na = c("nk")) |>
   dplyr::select(-(starts_with("..."))) |>
   dplyr::select(-(starts_with("Date"))) |>
-  dplyr::select(-c("ID patient", "Remarques", "Nom", "Prenom"))
-btit <- read_delim("datas/bnoms.csv", delim = ";")
+  dplyr::select(-c("ID patient", "Remarques", "Nom", "Prenom")) |> 
+  dplyr::filter(ID != 19) |>
+  mutate_if(is.character, as.factor)
+  btit <- read_delim("datas/bnoms.csv", delim = ";")
 names(tt) <- btit$code
 tt <- tt |>
-  mutate_if(is.character, as.factor) |>
-  janitor::clean_names()
+ janitor::clean_names()
 var_label(tt) <- btit$nom
 ```
 
@@ -195,3 +196,10 @@ tt |>
 Il s'agit d'une analyse strictement descriptive.  Les données ont été décrites par la médiane & les quartiles pour les données numériques, en pourcentage pour les données catégorielles. Les intervalles de confiance des pourcentages ont été calculés après transformation angulaire pour une limite à 95 %.
 
 L'analyse statistique a été réalisée avec le logiciel **R** [@rstat] & diverses librairies en particulier celles du `tidyverse` [@tidy] & `baseph` [@baseph].
+
+
+```{r}
+#| label:
+#| tab-cap:
+
+```  

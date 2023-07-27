@@ -4,13 +4,13 @@ author:
   - name: "Dr Philippe MICHEL"
     affiliations:
       name: "Hôpital NOVO - USRC"
-subtitle: "Rapport Statistique v1.0"
+subtitle: "Rapport Statistique v1.1"
 format: 
   revealjs:
     theme: simple
     embed-resources: true
     logo: novo_usrc.png
-cache: true
+cache: false
 ---
 
 ## Description de la population
@@ -48,7 +48,8 @@ tt <-
              na = c("nk")) |>
   dplyr::select(-(starts_with("..."))) |>
   dplyr::select(-(starts_with("Date"))) |>
-  dplyr::select(-c("ID patient", "Remarques", "Nom", "Prenom"))
+  dplyr::select(-c("ID patient", "Remarques", "Nom", "Prenom")) |> 
+  dplyr::filter(ID != 19)
 btit <- read_delim("datas/bnoms.csv", delim = ";")
 names(tt) <- btit$code
 tt <- tt |>
@@ -202,5 +203,3 @@ tt |>
   kable_paper("hover", full_width = TRUE, font_size = 24) |> 
   scroll_box(width = "100%", height = "680px")
 ```
-
-
